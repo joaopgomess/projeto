@@ -8,7 +8,7 @@ function App(){
 
   return(
     <>
-      <Box>
+      <Box id='container' >
         <Titulo/>
         <Botao/>
         <Lista/>

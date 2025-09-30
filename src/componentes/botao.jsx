@@ -28,15 +28,30 @@ function Botao() {
     // Função para fechar o dialog
     const onClose = () => setAbrir(false);
 
-    const handleSave = () => {
-        // Aqui você pode adicionar a lógica de salvar os dados
-        onClose();
-    };
+        const handleSave = async () => {
+            try {
+            const response = await fetch("http://localhost:4000/create", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ nome: Nome, cnpj: CNPJ, endereco: Endereco, numero: Numero, bairro: Bairro, cidade: Cidade, estado: Estado}), // Nome vem do seu input
+            });
+        
+            const result = await response.json();
+            console.log(result.msg); // "Usuário criado com sucesso."
+        
+            onClose(); // fecha modal ou form
+            } catch (error) {
+            console.error("Erro ao salvar usuário:", error);
+            }
+        };
+        
 
     return (
         <>
             <div>
-                <Button onClick={() => setAbrir(true)}>Cadastrar</Button>
+                <Button style={{color: 'black'}} onClick={() => setAbrir(true)}>Cadastrar</Button>
             </div>
             <Dialog open={abrir} onClose={() => setAbrir(false)} fullWidth maxWidth="sm" > {/* Para nao dar bug visual */}
                 <DialogTitle>

@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.lista {
+  text-align: center;
+  font-style: arial;
+}
+.paiList {
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+justify-content: flex-start;
+flex-grow: 1;
+}
+.itens {
+  margin: 10px;
+  text-align: justify;
+}
